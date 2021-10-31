@@ -1,48 +1,75 @@
 
 /********************GENERATING NUMBERS***************************/
 
-//Creating an array to store the 75 numbers of the Bingo
-let bingoNumbers = [];
 
-//Generating 75 unique randmon numbers
-while(bingoNumbers.length < 75){
+//variable to store the numbers
+const bingoNumbers = [];
 
-    var numbers = Math.floor(Math.random() * 75) + 1;
+//the max paremeter means the maximum quantity of numbers we want to generate
+function generateNumbers(max){
+    
+    while(bingoNumbers.length < max){
 
-    if(bingoNumbers.indexOf(numbers) === -1){
-        bingoNumbers.push(numbers);
-    } 
+        let numbers = Math.floor(Math.random() * max) + 1;
+
+        if(bingoNumbers.indexOf(numbers) === -1){
+            bingoNumbers.push(numbers);
+        } 
+    }
+    console.log(bingoNumbers);
+
 }
 
-//Then we have the array with the random numbers from 1 to 75
-console.log(bingoNumbers);
-
-//We could call just one number through its index
-console.log(bingoNumbers[1]);
-console.log(bingoNumbers[2]);
-
-/********************GENERATING CARD( I run out of time, missing code)***************/
+//we call the function with 75 numbers as asked
+generateNumbers(75);
 
 
-// let cardNumbers=[];
+/********************CALLING THE NUMBERS ONE BY ONE***************************/
 
-// for (let i=1; i<=75;i++){
+
+//Then we need to be calling one by one of the elements of the bingoNumbers array
+
+var indexOfNumber = 0; //to slice the first index of the array
+var numberOfNextIndex=1; //just to slice one element
+
+function callNumber(){
+
+    var numberCalled = bingoNumbers.slice(indexOfNumber,numberOfNextIndex);
+
+    console.log(numberCalled);
+
+    indexOfNumber++
+    numberOfNextIndex++
+
+}
+
+callNumber(); //Will call the first element of bingoNumbers array
+callNumber(); //Will call the second element of bingoNumbers array, and so on. Each time you call "callNumber" function.
+callNumber();
+
+
+
+
+/********************GENERATING CARD***************/
+
+
+  let cardNumbers=[];
+
+  for (let i=1; i<=bingoNumbers.length;i++){
     
-//     cardNumbers.push(i);
-    
-// }
-// console.log(cardNumbers)
+      cardNumbers.push(i);
+ 
+  }
+ console.log(cardNumbers)
 
-// function callRow(min,max,cols){
+ function callRow(min,max,cols){
 
-//     for(let i=0; i<bingoNumbers.length;i++){
-//         if(bingoNumbers[i]>min && bingoNumbers[i]<max){
-            
-//         }
-//     }
-// }
-// callRow(1,15,5);
-// callRow(16,30,5);
-// callRow(31,45,5);
-// callRow(46,60,5);
-// callRow(61,75,5);
+    let bingoWord = ["B","I","N","G","O"]
+    console.log(bingoWord)
+     for(let i=0; i<cardNumbers.length;i++){
+         if(cardNumbers[i]>min && cardNumbers[i]<max){
+            console.log(cardNumbers);
+         }
+     }
+ }
+ callRow(1,15,5);
